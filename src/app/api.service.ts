@@ -13,4 +13,8 @@ export class ApiService {
     return this.http.post("http://angular-testdemo.herokuapp.com/savedata",data)
 
   }
+  viewData()
+  {
+    return this.http.get("http://angular-testdemo.herokuapp.com/viewuserdata");
+  }
 }

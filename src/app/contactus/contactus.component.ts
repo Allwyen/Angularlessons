@@ -19,6 +19,7 @@ export class ContactusComponent implements OnInit {
 
     this.apiservice.insertData(data.value).subscribe((response)=>{
       console.log(response);
+      
     });
   }
 
