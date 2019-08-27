@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { ApiService } from '../api.service';
 @Component({
   selector: 'app-contactus',
   templateUrl: './contactus.component.html',
@@ -9,21 +10,19 @@ export class ContactusComponent implements OnInit {
 
   getName='';
   getEmail='';
+  getMob='';
   getMsg='';
 
   onSubmit(data:NgForm)
   {
-    this.getName=data.value.name;
-    console.log(data.value.name);
+    console.log(data.value);
 
-    this.getEmail=data.value.email;
-    console.log(data.value.email);
-    
-    this.getMsg=data.value.msg;
-    console.log(data.value.msg);
+    this.apiservice.insertData(data.value).subscribe((response)=>{
+      console.log(response);
+    });
   }
 
-  constructor() { }
+  constructor(private apiservice:ApiService) { }
 
   ngOnInit() {
   }
