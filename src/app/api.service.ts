@@ -17,4 +17,8 @@ export class ApiService {
   {
     return this.http.get("http://angular-testdemo.herokuapp.com/viewuserdata");
   }
+  searchData(data)
+  {
+    return this.http.post("http://angular-testdemo.herokuapp.com/searchmob",data);
+  }
 }
