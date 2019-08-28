@@ -10,15 +10,23 @@ export class ApiService {
 
   insertData(data)
   {
-    return this.http.post("http://angular-testdemo.herokuapp.com/savedata",data)
+    return this.http.post("http://localhost:4000/savedata",data)
 
   }
   viewData()
   {
-    return this.http.get("http://angular-testdemo.herokuapp.com/viewuserdata");
+    return this.http.get("http://localhost:4000/viewuserdata");
   }
   searchData(data)
   {
-    return this.http.post("http://angular-testdemo.herokuapp.com/searchmob",data);
+    return this.http.post("http://localhost:4000/usermobsearch",data);
+  }
+  deleteData(data)
+  {
+    return this.http.post("http://localhost:4000/userdelete",data);
+  }
+  updateData(data)
+  {
+    return this.http.post("http://localhost:4000/userupdate",data);
   }
 }

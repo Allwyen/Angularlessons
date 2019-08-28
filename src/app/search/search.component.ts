@@ -9,18 +9,43 @@ import { NgForm } from '@angular/forms';
 export class SearchComponent implements OnInit {
 
   private mydata:Array<object> = [];
- 
-  constructor(private apiservice:ApiService) { }
 
-  status=true;
+  // private status=false;
+
+  constructor(private apiservice:ApiService) { }
 
   onSubmit(data:NgForm)
   {
-    console.log(data.value);
-
+    //console.log("Mobile:"+data.value);
     this.apiservice.searchData(data.value).subscribe((response:Array<object>)=>{
-      this.mydata=response;
-      alert(this.mydata);
+      
+      if(response.length>0)
+      {
+        // this.status=true;
+        this.mydata=response;
+      }
+    });
+  }
+
+  deleteuser()
+  {
+    console.log(this.mydata[0]);
+    this.apiservice.deleteData(this.mydata[0]).subscribe((response:Array<object>)=>{
+      if(response.length>0)
+      {
+        alert('Deleted');
+      }
+    });
+  }
+
+  updateuser()
+  {
+    console.log(this.mydata[0]);
+    this.apiservice.updateData(this.mydata[0]).subscribe((response:Array<object>)=>{
+      if(response.length>0)
+      {
+        alert('Updated');
+      }
     });
   }
 

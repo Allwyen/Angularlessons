@@ -2,13 +2,25 @@
   search works!
 </p>
 
-<ng-template #nodata>No data available</ng-template> -->
-
-<div *ngIf="status else nodata">
+No data available -->
+<!-- <ng-template #nodata> -->
   <form (ngSubmit)=onSubmit(f) #f="ngForm">
     <table class="table">
-      <tr><td>Mobile:</td><td><input type="text" class="form-control" name="emob" id=""></td></tr>
+      <tr><td>Mobile:</td><td><input type="text" class="form-control" name="emob" id="" ngModel></td></tr>
       <tr><td></td><td><input type="submit" class="btn btn-primary" value="Search"></td></tr>
     </table>
-  </form>
-</div>
+  </form> 
+<!-- </ng-template> -->
+
+<!-- <div *ngIf="status else nodata"> -->
+ <table class="table">
+   <div *ngFor="let data of mydata">
+      <tr><td></td><td><input type="hidden" name="eid" id="" [(ngModel)]="data._id"></td></tr>
+      <tr><td>Name:</td><td><input type="text" class="form-control" name="ename" id="" [(ngModel)]="data.ename" ></td></tr>
+      <tr><td>Email:</td><td><input type="email" class="form-control" name="eemail" id="" [(ngModel)]="data.eemail"></td></tr>
+      <tr><td>Mobile:</td><td><input type="text" class="form-control" name="emob" id="" [(ngModel)]="data.emob"></td></tr>
+      <tr><td>Message:</td><td><textarea name="emsg" class="form-control" id="" cols="30" rows="3" [(ngModel)]="data.emsg"></textarea></td></tr>
+      <tr><td><input type="button" (click)="deleteuser()" class="btn btn-danger" value="Delete"></td><td><input type="button" (click)="updateuser()" class="btn btn-primary" value="Update"></td></tr>
+    </div>
+ </table>
+<!-- </div> -->
